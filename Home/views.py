@@ -32,4 +32,4 @@ def home(request):
     {"Slider" : slider, "aboutUs":aboutus,
      "belowAboutUs":belowaboutus, "calltoaction":calltoaction, "skillsDescription" : skillsdescription,
      "Skill":skill, "portfolioCategories" : portfoliocategories, "Project" : project , "teamDescription" : teamdescription, 
-     "Team" : team, "contactDescription":contactdescription, "Contact" : contact, "Footer" : footer})
+     "Team" : team, "contactDescription":contactdescription, "Contact" : contact, "Footer" : footer, "Active" : "active"})

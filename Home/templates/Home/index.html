@@ -68,7 +68,7 @@
 
         <div class="carousel-inner" role="listbox">
           {% for Slider in Slider.all %}
-          <div class="carousel-item active">
+          <div class="carousel-item {{ Active }}">
             <div class="carousel-background"><img src="{{ Slider.sliderImage.url }}" alt=""></div>
             <div class="carousel-container">
               <div class="carousel-content">
