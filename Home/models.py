@@ -3,6 +3,17 @@ from django.db import models
 
 from ckeditor.fields import RichTextField
 
+class startSlider(models.Model):
+    header = models.CharField(max_length = 80, blank = True, null = True)
+    description = models.CharField(max_length = 200, blank = True, null = True)
+    sliderImage = models.ImageField(upload_to = 'images/', null = True)
+
+    def __str__(self):
+        return self.header
+
+    class Meta:
+        verbose_name_plural = "1.1 startSliders"
+
 class Slider(models.Model):
     header = models.CharField(max_length = 80, blank = True, null = True)
     description = models.CharField(max_length = 200, blank = True, null = True)
@@ -12,7 +23,7 @@ class Slider(models.Model):
         return self.header
 
     class Meta:
-        verbose_name_plural = "1.1 Sliders"
+        verbose_name_plural = "1.2 Sliders"
 
 class aboutUs(models.Model):
     description = models.CharField(max_length = 200, blank = True, null = True)
@@ -21,7 +32,7 @@ class aboutUs(models.Model):
         return "About Us"
 
     class Meta:
-        verbose_name_plural = "1.2 AboutUs"
+        verbose_name_plural = "1.3 AboutUs"
 
 class belowAboutUs(models.Model):
     icon = models.CharField(max_length = 50 , blank = True, null = True)
@@ -33,34 +44,36 @@ class belowAboutUs(models.Model):
         return self.header
 
     class Meta:
-        verbose_name_plural = "1.3 BelowAboutUs"
+        verbose_name_plural = "1.4 BelowAboutUs"
 
 class callToAction(models.Model):
     header = models.CharField(max_length = 100, blank = True, null = True)
     description = models.CharField(max_length = 300, blank = True, null = True)
+    linkHeader = models.CharField(max_length = 40, blank = True, null = True)
     link = models.URLField(max_length = 200, blank = True, null = True)
 
     def __str__(self):
         return self.header
 
     class Meta:
-        verbose_name_plural = "1.4 Calltoaction"
+        verbose_name_plural = "1.5 Calltoaction"
 
 class skillsDescription(models.Model):
     description = models.CharField(max_length = 300, blank = True, null = True)
 
     class Meta:
-        verbose_name_plural = "1.5 SkillsDescription"
+        verbose_name_plural = "2.1 SkillsDescription"
 
 class Skill(models.Model):
     skillName = models.CharField(max_length = 150, blank = True, null = True)
     skillPercentage = models.IntegerField(blank = True, null = True)
-
+    skillColor = models.CharField(max_length = 150, blank = True, null = True, help_text = "Insert these colors. success = Green, info =  blue, warning = yellow, danger = red")
     def __str__(self):
         return self.skillName
 
     class Meta:
-        verbose_name_plural = "2.1 Skill"
+        verbose_name_plural = "2.2 Skill"
+        ordering = ['-skillPercentage',]
 
 class portfolioCategories(models.Model):
     category = models.CharField(max_length = 50, blank = True, null = True)
@@ -73,7 +86,7 @@ class portfolioCategories(models.Model):
         return category.replace(" ", "").upper()
 
     class Meta:
-        verbose_name_plural = "2.2 PortfolioCategories"
+        verbose_name_plural = "2.3 PortfolioCategories"
 
 class Project(models.Model):
     projectImage = models.ImageField(upload_to = 'images/', null = True)
@@ -88,7 +101,7 @@ class Project(models.Model):
         return projectCategory.replace(" ", "").upper()
 
     class Meta:
-        verbose_name_plural = "2.3 Projects"
+        verbose_name_plural = "2.4 Projects"
 
 class teamDescription(models.Model):
     description = models.CharField(max_length = 300, blank = True, null = True)
@@ -97,18 +110,18 @@ class teamDescription(models.Model):
         return "Team Description"
 
     class Meta:
-        verbose_name_plural = "2.4 TeamDescription"
+        verbose_name_plural = "2.5 TeamDescription"
 
 class Team(models.Model):
     name = models.CharField(max_length = 25, blank = True, null = True)
-    title = models.CharField(max_length = 20, blank = True, null = True)
+    position = models.CharField(max_length = 20, blank = True, null = True)
     image = models.ImageField(upload_to = 'images/', null = True)
 
     def __str__(self):
         return self.name
 
     class Meta:
-        verbose_name_plural = "2.5 Team"
+        verbose_name_plural = "3.1 Team"
 
 class contactDescription(models.Model):
     description = models.CharField(max_length = 150, blank = True, null = True)
@@ -117,7 +130,7 @@ class contactDescription(models.Model):
         return "Contact Description"
 
     class Meta:
-        verbose_name_plural = "3.1 ContactDescription"
+        verbose_name_plural = "3.2 ContactDescription"
 class Contact(models.Model):
     icon = models.CharField(max_length = 200, blank = True, null = True)
     header = models.CharField(max_length = 30, blank = True, null = True)
@@ -127,7 +140,7 @@ class Contact(models.Model):
         return self.header
 
     class Meta:
-        verbose_name_plural = "3.2 Contact"
+        verbose_name_plural = "3.3 Contact"
 
 class Footer(models.Model):
     footerDescription = models.TextField(max_length = 500, blank = True, null = True)
@@ -141,4 +154,4 @@ class Footer(models.Model):
         return "Footer"
 
     class Meta:
-        verbose_name_plural = "3.3 Footer"
+        verbose_name_plural = "3.4 Footer"

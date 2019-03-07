@@ -1,4 +1,5 @@
 from django.contrib import admin
+from .models import startSlider
 from .models import Slider
 from .models import aboutUs
 from .models import belowAboutUs
@@ -20,6 +21,7 @@ class Static(admin.ModelAdmin):
     def has_delete_permission(self, request, obj=None):
         return False
 
+admin.site.register(startSlider)
 admin.site.register(Slider)
 admin.site.register(aboutUs)
 admin.site.register(belowAboutUs)
