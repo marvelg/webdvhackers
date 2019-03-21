@@ -132,12 +132,12 @@ class contactDescription(models.Model):
     class Meta:
         verbose_name_plural = "3.2 ContactDescription"
 class Contact(models.Model):
-    icon = models.CharField(max_length = 200, blank = True, null = True)
-    header = models.CharField(max_length = 30, blank = True, null = True)
-    content = models.CharField(max_length = 150, blank = True, null = True)
+    location = models.CharField(max_length = 150, blank = True, null = True)
+    phoneNumber = models.CharField(max_length = 150, blank = True, null = True)
+    email = models.CharField(max_length = 150, blank = True, null = True)
 
     def __str__(self):
-        return self.header
+        return "Contact"
 
     class Meta:
         verbose_name_plural = "3.3 Contact"

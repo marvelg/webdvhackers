@@ -277,16 +277,18 @@
 
         <div class="section-header">
           <h3>Contact Us</h3>
-          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
+          {% for contactDescription in contactDescription.all %}
+          <p>{{ contactDescription.description }}</p>
+          {% endfor %}
         </div>
 
         <div class="row contact-info">
-
+          {% for Contact in Contact.all %}
           <div class="col-md-4">
             <div class="contact-address">
               <i class="ion-ios-location-outline"></i>
               <h3>Location</h3>
-              <address>A108 Adam Street, NY 535022, USA</address>
+              <address>{{ Contact.location }}</address>
             </div>
           </div>
 
@@ -294,7 +296,7 @@
             <div class="contact-phone">
               <i class="ion-ios-telephone-outline"></i>
               <h3>Phone Number</h3>
-              <p><a href="tel:+155895548855">+1 5589 55488 55</a></p>
+              <p><a href="tel:{{ Contact.phoneNumber }}">{{ Contact.phoneNumber }}</a></p>
             </div>
           </div>
 
@@ -302,10 +304,10 @@
             <div class="contact-email">
               <i class="ion-ios-email-outline"></i>
               <h3>Email</h3>
-              <p><a href="mailto:info@example.com">info@example.com</a></p>
+              <p><a href="mailto:{{ Contact.email }}">{{ Contact.email }}</a></p>
             </div>
           </div>
-
+          {% endfor %}
         </div>
 
         
@@ -320,10 +322,10 @@
     <div class="footer-top">
       <div class="container">
         <div class="row">
-
+          {% for Footer in Footer.all %}
           <div class="col-lg-4 col-md-6 footer-info">
             <h3>DVHackers</h3>
-            <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus. Scelerisque felis imperdiet proin fermentum leo. Amet volutpat consequat mauris nunc congue.</p>
+            <p>{{ Footer.footerDescription}}</p>
           </div>
 
           <div class="col-lg-4 col-md-6 footer-links">
@@ -348,17 +350,22 @@
             </p>
 
             <div class="social-links">
-              <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-              <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-              <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
-              <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
-              <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+              {% if Footer.twitterLink %}
+              <a href="{{ Footer.twitterLink}}" class="twitter"><i class="fa fa-twitter"></i></a>
+              {% endif %}
+              {% if Footer.facebookLink %}
+              <a href="{{ Footer.facebookLink }}" class="facebook"><i class="fa fa-facebook"></i></a>
+              {% endif %}
+              {% if Footer.instagramLink %}
+              <a href="{{ Footer.instagramLink}}" class="instagram"><i class="fa fa-instagram"></i></a>
+              {% endif %}
+              {% if Footer.linkedinLink %}
+              <a href="{{ Footer.linkedinLink }}" class="linkedin"><i class="fa fa-linkedin"></i></a>
+              {% endif %}
             </div>
 
           </div>
-
-          
-
+          {% endfor %}
         </div>
       </div>
     </div>
